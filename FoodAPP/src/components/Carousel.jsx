@@ -9,24 +9,24 @@ const Carousel = () => {
         data-bs-ride="carousel"
         style={{ objectFit: "contain !important" }}
       >
-        <div class="carousel-inner" id="carousel">
+        <div className="carousel-inner" id="carousel">
           <div className="carousel-caption" style={{ zIndex: "10" }}>
-            <form class="d-flex">
+            <form className="d-flex">
               <input
-                class="form-control me-2"
+                className="form-control me-2"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
               />
               <button
-                class="btn btn-outline-success text-white bg-success"
+                className="btn btn-outline-success text-white bg-success"
                 type="submit"
               >
                 Search
               </button>
             </form>
           </div>
-          <div class="carousel-item active">
+          <div className="carousel-item active">
             <img
               src="https://picsum.photos/id/1/900/700"
               className="d-block w-100"
