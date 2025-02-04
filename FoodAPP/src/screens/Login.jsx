@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 function Login() {
   const [details, setdetails] = useState({ email: "", password: "" });
@@ -30,6 +31,8 @@ function Login() {
 
       if (json.success) {
         //this the authtoken which is check the authanticity of user and everytime authtoken generate diff.
+
+        localStorage.setItem("userEmail", details.email);
         localStorage.setItem("authToken", json.authTken);
         navigate("/");
       } else {
@@ -46,9 +49,23 @@ function Login() {
     setdetails({ ...details, [event.target.name]: event.target.value });
   };
   return (
-    <div>
+    <div
+      style={{
+        backgroundImage:
+          'url("https://images.pexels.com/photos/326278/pexels-photo-326278.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")',
+        height: "100vh",
+        backgroundSize: "cover",
+      }}
+    >
+      <div>
+        <Navbar />
+      </div>
+
       <div className="container">
-        <form onSubmit={handleSubmit}>
+        <form
+          className="w-50 m-auto mt-5 border bg-dark border-success rounded"
+          onSubmit={handleSubmit}
+        >
           <div className="mb-3">
             <label htmlFor="exampleInputEmail1" className="form-label">
               Email address

@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 const Signup = () => {
   const [details, setdetails] = useState({
@@ -11,6 +12,7 @@ const Signup = () => {
   });
 
   const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -59,11 +61,24 @@ const Signup = () => {
     setdetails({ ...details, [event.target.name]: event.target.value });
   };
   return (
-    <>
+    <div
+      style={{
+        backgroundImage:
+          'url("https://images.pexels.com/photos/1565982/pexels-photo-1565982.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")',
+        backgroundSize: "cover",
+        height: "100vh",
+      }}
+    >
+      <div>
+        <Navbar />
+      </div>
       <div className="container">
-        <form onSubmit={handleSubmit}>
+        <form
+          className="w-50 m-auto mt-5 border bg-dark border-success rounded"
+          onSubmit={handleSubmit}
+        >
           <div className="mb-3">
-            <label htmlFor="name" className="form-label">
+            <label htmlFor="name" className="form-label text-white">
               Name
             </label>
             <input
@@ -76,7 +91,10 @@ const Signup = () => {
           </div>
 
           <div className="mb-3">
-            <label htmlFor="exampleInputEmail1" className="form-label">
+            <label
+              htmlFor="exampleInputEmail1"
+              className="form-label text-white"
+            >
               Email address
             </label>
             <input
@@ -86,12 +104,15 @@ const Signup = () => {
               value={details.email}
               onChange={onChange}
             />
-            <div id="emailHelp" className="form-text">
+            <div id="emailHelp" className="form-text text-white">
               We'll never share your email with anyone else.
             </div>
           </div>
           <div className="mb-3">
-            <label htmlFor="exampleInputPassword1" className="form-label">
+            <label
+              htmlFor="exampleInputPassword1"
+              className="form-label text-white"
+            >
               Password
             </label>
             <input
@@ -104,7 +125,10 @@ const Signup = () => {
           </div>
 
           <div className="mb-3">
-            <label htmlFor="exampleInputPassword1" className="form-label">
+            <label
+              htmlFor="exampleInputPassword1"
+              className="form-label text-white"
+            >
               Address
             </label>
             <input
@@ -123,7 +147,7 @@ const Signup = () => {
           </Link>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

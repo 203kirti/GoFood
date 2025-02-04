@@ -18,7 +18,6 @@ function Home() {
     response = await response.json();
     setfoodItems(response[0]);
     setfoodCat(response[1]);
-    x;
   };
 
   useEffect(() => {
@@ -43,7 +42,7 @@ function Home() {
                 <input
                   className="form-control me-2"
                   type="search"
-                  placeholder="Search"
+                  placeholder="Search here..."
                   aria-label="Search"
                   value={Search}
                   onChange={(e) => setSearch(e.target.value)}
@@ -117,31 +116,31 @@ function Home() {
                     {data.CategoryName}
                   </div>
                   <hr />
-                  {foodItems.length > 0
-                    ? foodItems
-                        .filter(
-                          (foodData) =>
-                            foodData.CategoryName === data.CategoryName &&
-                            foodData.name
-                              .toLowerCase()
-                              .includes(Search.toLocaleLowerCase())
-                        )
-                        .map((filterItems) => {
-                          return (
-                            <div
-                              key={filterItems._id}
-                              className="col-12 col-mb-6 col-lg-3"
-                            >
-                              <Card
-                                foodName={filterItems.name}
-                                foodImg={filterItems.img}
-                                options={filterItems.options[0]}
-                                foodDescription={filterItems.description}
-                              ></Card>
-                            </div>
-                          );
-                        })
-                    : ""}
+                  {foodItems.length > 0 ? (
+                    foodItems
+                      .filter(
+                        (foodData) =>
+                          foodData.CategoryName === data.CategoryName &&
+                          foodData.name
+                            .toLowerCase()
+                            .includes(Search.toLocaleLowerCase())
+                      )
+                      .map((filterItems) => {
+                        return (
+                          <div
+                            key={filterItems._id}
+                            className="col-12 col-mb-6 col-lg-3"
+                          >
+                            <Card
+                              foodItem={filterItems}
+                              options={filterItems.options[0]}
+                            ></Card>
+                          </div>
+                        );
+                      })
+                  ) : (
+                    <div>No Such Data</div>
+                  )}
                 </div>
               );
             })
